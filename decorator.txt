@@ -1,0 +1,40 @@
+# -*- coding = utf-8 -*-
+代码运行期间动态增加功能的方式称之为装饰器Decorator.
+# 例：不添加parameter的decorator：
+# 
+class C:
+	def foo(cls, y):
+		print "classmethod", cls, y
+	foo = classmethod(foo)
+
+
+class C:
+	@classmethod
+	def foo(cls,y):
+	print "classmethod", cls, y 
+
+两层嵌套 now = log(now) 
+由于log()是一个decorator，返回一个函数，所以，原来的now()函数仍然存在，只是现在同名的now变量指向了新的函数，于是调用now()将执行新函数，即在log()函数中返回的wrapper()函数。
+def log(func):
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+
+@log
+def now():
+    print('2015-3-25')
+
+
+三层嵌套 now = log('execute')(now)
+def log(text):
+    def decorator(func):
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+
+@log('execute')
+def now():
+    print('2015-3-25')

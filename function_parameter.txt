@@ -1,0 +1,10 @@
+# -*- coding = utf-8 -*-
+位置参数
+默认参数
+	必选参数在前，默认参数在后
+可变参数
+	*args 接受一个tuple
+关键字参数
+	**kw 接收一个dict
+命名关键字参数
+	def test(parameter1, *, parameter2, parameter3)

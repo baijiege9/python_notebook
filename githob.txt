@@ -1,0 +1,7 @@
+# -*- coding = utf-8 -*-
+pwd
+git init
+git add readme.txt # git add <file>
+git commit -m xxx # 本次提交的说明
+git status # 查看状态
+git diff <file> # 查看不同 
